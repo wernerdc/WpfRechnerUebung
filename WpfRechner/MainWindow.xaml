@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfRechner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        ResizeMode="NoResize"
+        Title="WpfRechner" Height="450" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -114,7 +115,11 @@
                 Click="btnBeenden_Click"/>
         </Grid>
 
-        <ListBox x:Name="lBoxVerlauf" Grid.Row="2"/>
+        <ListBox 
+            x:Name="lBoxVerlauf" 
+            Grid.Row="2"
+            FontFamily="Consolas"
+            Background="#FFEEF5F9"/>
         
     </Grid>
 </Window>

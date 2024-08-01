@@ -33,7 +33,8 @@ namespace WpfRechner {
                 ComboBoxItem selectedItem = cbRechenart.SelectedItem as ComboBoxItem;
                 rechenart = selectedItem.Content.ToString();
             } catch {
-                MessageBox.Show("Ungültige Eingabe. \nNur Zahlen und Komma ',' sind erlaubt!", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ungültige Eingabe! \nEs sind nur Zahlen und Komma erlaubt.", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             double result = 0;
@@ -58,6 +59,14 @@ namespace WpfRechner {
             }
 
             tbErgebnis.Text = result.ToString();
+
+            DateTime dateTime = DateTime.Now;
+            string listItemText = String.Format("[{0:dd.MM.yyyy H:mm:ss}]:  {1} {2} {3} = {4}", dateTime, zahl1, rechenart, zahl2, result);
+
+            ListBoxItem listBoxItem = new() { Content = listItemText };
+            lBoxVerlauf.Items.Add(listBoxItem);
+            lBoxVerlauf.ScrollIntoView(listBoxItem);
+            lBoxVerlauf.SelectedItem = listBoxItem;
         }
 
         private void btnBeenden_Click(object sender, RoutedEventArgs e) {
